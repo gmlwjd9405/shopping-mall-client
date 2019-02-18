@@ -19,6 +19,7 @@ export default {
     ResultView.setup(document.querySelector('#search-result')) // id
 
     TabView.setup(document.querySelector('#tabs')) // id
+      .on('@change', e => this.onChangeTab(e.detail.tabName))
     this.selectedTab = '추천 검색어' // 초기 활성화 tab
 
     this.renderView()
@@ -56,4 +57,8 @@ export default {
   onSearchResult(data) {
     ResultView.render(data)
   },
+
+  onChangeTab(tabName) {
+    debugger
+  }
 }
