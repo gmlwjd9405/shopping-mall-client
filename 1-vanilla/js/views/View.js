@@ -20,7 +20,7 @@ export default {
 
   // 스스로 이벤트를 방출
   emit(event, data) {
-    const evt = new CustomEvent(event, { detail: data})
+    const evt = new CustomEvent(event, { detail: data } )
     this.el.dispatchEvent(evt);
     return this
   },
