@@ -1,5 +1,6 @@
 import FormView from '../views/FormView.js'
 import ResultView from '../views/ResultView.js'
+import TabView from '../views/TabView.js'
 
 import SearchModel from '../models/SearchModel.js'
 
@@ -16,6 +17,18 @@ export default {
 
     // 해당 id에 해당하는 element를 넘겨준다.
     ResultView.setup(document.querySelector('#search-result')) // id
+
+    TabView.setup(document.querySelector('#tabs')) // id
+    this.selectedTab = '추천 검색어' // 초기 활성화 tab
+
+    this.renderView()
+  },
+
+  // controller가 가지고 있는 모든 View들을 한 번에 그려주는 함수
+  renderView() {
+    console.log(tag, 'renderView()')
+    TabView.setActiveTab(this.selectedTab)
+    ResultView.hide() // 처음엔 감춘다.
   },
 
   // Enter -> 입력 데이터를 받아서 검색 요청
