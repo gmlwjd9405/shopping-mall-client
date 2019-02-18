@@ -11,11 +11,24 @@ FormView.setup = function(el) {
   this.inputEL = el.querySelector('[type=text]')
   this.resetEL = el.querySelector('[type=reset]')
   this.showResetBtn(false) // 초기값은 숨김
+  this.bindEvents()
 }
 
+// 버튼을 보여주는 함수
 FormView.showResetBtn = function(show = true) {
   this.resetEL.style.display = show ? 'block' : 'none'
 }
+
+FormView.bindEvents = function() {
+  this.inputEL.addEventListener('keyup', e => this.onKeyup(e))
+}
+
+// 입력한 문자열이 있는 경우에만 버튼이 나오도록 
+FormView.onKeyup = function() {
+  this.showResetBtn(this.inputEL.value.length)
+  
+}
+
 
 // FormView를 controller에서 사용할 것이므로 
 export default FormView
