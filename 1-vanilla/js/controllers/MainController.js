@@ -27,7 +27,7 @@ export default {
     })
   },
 
-  // Entet -> 입력 데이터를 받아서 검색 요청
+  // Enter -> 입력 데이터를 받아서 검색 요청
   onSubmit(input) {
     console.log(tag, 'onSubmit()', input)
     this.search(input)

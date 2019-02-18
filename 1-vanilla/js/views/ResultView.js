@@ -14,8 +14,21 @@ ResultView.render = function (data = []) {
   this.el.innerHTML = data.length ? this.getSearchResultHtml(data) : '검색 결과가 없습니다.'
 }
 
+// innerHTML에 들어갈 html 문자열만 return
 ResultView.getSearchResultHtml = function (data) {
-  debugger
+  // reduce: 배열 안의 요소를 하나의 문자열로 연결 
+  return data.reduce((html, item) => {
+    html += this.getSearchItemHtml(item)
+    return html // 추가된 li를 반환 
+  }, '<ul>') + '</ul>'
+}
+
+// img + txt (SearchModel.js의 형태) 로 이루어진 li을 return 
+ResultView.getSearchItemHtml = function (item) {
+  return `<li>
+    <img src="${item.image}">
+    <p>${item.name}</p>
+   </li>`
 }
 
 // MainController에서 ResultView를 사용할 것이므로 
