@@ -9,13 +9,25 @@ export default {
   init() { 
     // console.log(tag, 'init()')
     
-    // form에 해당하는 element를 넘겨준다.
+    // form에 해당하는 element를 넘겨준다. chaining 이용 
     FormView.setup(document.querySelector('form')) // tag name
-      .on('@submit', e => this.onSubmit(e.detail.input)) // chaining 이용 
+      .on('@submit', e => this.onSubmit(e.detail.input)) 
       .on('@reset', e => this.onResetForm())
 
     // 해당 id에 해당하는 element를 넘겨준다.
     ResultView.setup(document.querySelector('#search-result')) // id
+  },
+
+  // Enter -> 입력 데이터를 받아서 검색 요청
+  onSubmit(input) {
+    console.log(tag, 'onSubmit()', input)
+    this.search(input)
+  },
+
+  // 검색폼이 초기화 및 검색 결과 삭제
+  onResetForm() {
+    console.log(tag, 'onResetForm()')
+    ResultView.hide() // View의 hide
   },
 
   // Server에 검색 결과를 요청하는 api를 호출
@@ -26,17 +38,7 @@ export default {
       this.onSearchResult(data)
     })
   },
-
-  // Enter -> 입력 데이터를 받아서 검색 요청
-  onSubmit(input) {
-    console.log(tag, 'onSubmit()', input)
-    this.search(input)
-  },
-
-  onResetForm() {
-    console.log(tag, 'onResetForm()')
-  },
-
+  
   // Server로부터 받은 검색 결과를 화면에 출력 
   onSearchResult(data) {
     ResultView.render(data)

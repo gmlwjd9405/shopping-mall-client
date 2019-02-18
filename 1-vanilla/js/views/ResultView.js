@@ -11,11 +11,12 @@ ResultView.setup = function (el) {
 // 서버에서 검색 결과 데이터를 받아서 동적으로 DOM을 만들어 주는 함수
 ResultView.render = function (data = []) {
   console.log(tag, 'render()', data)
-  this.el.innerHTML = data.length ? this.getSearchResultHtml(data) : '검색 결과가 없습니다.'
+  this.el.innerHTML = data.length ? this.getSearchResultsHtml(data) : '검색 결과가 없습니다.'
+  this.show() // 중요!
 }
 
 // innerHTML에 들어갈 html 문자열만 return
-ResultView.getSearchResultHtml = function (data) {
+ResultView.getSearchResultsHtml = function (data) {
   // reduce: 배열 안의 요소를 하나의 문자열로 연결 
   return data.reduce((html, item) => {
     html += this.getSearchItemHtml(item)
