@@ -8,9 +8,14 @@ export default {
       // form에 해당하는 element를 넘겨준다.
      FormView.setup(document.querySelector('form'))
       .on('@submit', e => this.onSubmit(e.detail.input)) // chaining 이용 
+      .on('@reset', e => this.onResetForm())
   },
 
   onSubmit(input) {
     console.log(tag, 'onSubmit()', input)
   },
+
+  onResetForm() {
+    console.log(tag, 'onResetForm()')
+  }
 }

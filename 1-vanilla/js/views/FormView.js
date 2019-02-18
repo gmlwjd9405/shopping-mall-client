@@ -22,20 +22,31 @@ FormView.showResetBtn = function(show = true) {
   this.resetEL.style.display = show ? 'block' : 'none'
 }
 
-// keyup에 대한 이벤트 바인드
+// 이벤트 바인드 함수 
 FormView.bindEvents = function() {
   this.on('submit', e => e.preventDefualt())
   this.inputEL.addEventListener('keyup', e => this.onKeyup(e))
+  this.resetEL.addEventListener('click', e => this.onClieckReset())
 }
 
 // 1. 입력한 문자열이 있는 경우에만 버튼이 나오도록 
-// 2. key가 enter이면 MainController에게 알림(ResultView가 결과를 보여줌)
+// 2. 입력한 문자열이 enter이면 MainController에게 알림(ResultView가 결과를 보여줌)
+// 3. 입력한 문자열이 모두 지워지면 MainController에게 알림
 FormView.onKeyup = function(e) {
   const enter = 13
-  this.showResetBtn(this.inputEL.value.length)
+  this.showResetBtn(this.inputEL.value.length) // resetBtn 표시 
+
+  if (!this.inputEL.value.length)
+    this.emit('@reset') // @reset event를 알림 
   
   if (e.keyCode !== enter) return
-  this.emit('@submit', { input: this.inputEL.value })
+  this.emit('@submit', { input: this.inputEL.value }) // @submit event를 알림
+}
+
+// x를 클릭하면 MainController에게 알림
+FormView.onClieckReset = function() {
+  this.emit('@reset') // @reset event를 알림
+  this.showResetBtn(false) // resetBtn 숨김
 }
 
 // FormView를 controller에서 사용할 것이므로 
