@@ -22,9 +22,13 @@ new Vue({
       if (!this.query.length) this.onReset()
     },
     onReset() {
+      this.resetForm()
+    },
+    resetForm() {
       this.query = ''
-      // [todo] 검색 결과 숨기기 
-      debugger
+      // 검색 결과 숨기기 
+      this.submitted = false
+      this.searchResult = []
     },
     search() {
       SearchModel.list().then(data => {
