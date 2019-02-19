@@ -76,6 +76,8 @@ new Vue({
         this.submitted = true // 검색함 
         this.searchResult = data
       })
+      HistoryModel.add(this.query)
+      this.fetchHistory()
     },
   }
 
