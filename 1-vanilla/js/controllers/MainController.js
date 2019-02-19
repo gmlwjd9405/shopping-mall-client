@@ -2,9 +2,11 @@ import FormView from '../views/FormView.js'
 import ResultView from '../views/ResultView.js'
 import TabView from '../views/TabView.js'
 import KeywordView from '../views/KeywordView.js'
+import HistoryView from '../views/HistoryView.js'
 
 import SearchModel from '../models/SearchModel.js'
 import KeywordModel from '../models/KeywordModel.js'
+import HistoryModel from '../models/HistoryModel.js'
 
 const tag = '[MainController]' // 디버깅을 위한 태그
 
@@ -22,10 +24,13 @@ export default {
 
     TabView.setup(document.querySelector('#tabs')) // id
       .on('@change', e => this.onChangeTab(e.detail.tabName))
-    this.selectedTab = '추천 검색어' // 초기 활성화 tab
+    this.selectedTab = '최근 검색어' // 초기 활성화 tab
 
     KeywordView.setup(document.querySelector('#search-keyword')) // id
       .on('@click', e => this.onClickKeyword(e.detail.keyword))
+
+    HistoryView.setup(document.querySelector('#search-history')) // id
+      .on('@click', e => this.onClickHistory(e.detail.keyword))
 
     this.renderView()
   },
@@ -38,7 +43,7 @@ export default {
     if (this.selectedTab === '추천 검색어') {
       this.fetchSearchKeyword()
     } else {
-      debugger
+      this.fetchSearchHistory()
     }
 
     ResultView.hide() // 처음엔 감춘다.
@@ -47,6 +52,12 @@ export default {
   fetchSearchKeyword() {
     KeywordModel.list().then(data => { // 해당 데이터를 가져와 화면에 뿌려준다.
       KeywordView.render(data)
+    })
+  },
+
+  fetchSearchHistory() {
+    HistoryModel.list().then(data => {
+      HistoryView.render(data)
     })
   },
 
@@ -92,5 +103,9 @@ export default {
   // 검색 결과 리스트 목록에서 키워드 선택 시 호출되는 함수 
   onClickKeyword(keyword) {
     this.search(keyword)
-  }
+  },
+
+  onClickHistory(keyword) {
+    this.search(keyword)
+  },
 }
