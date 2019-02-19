@@ -67,6 +67,7 @@ export default {
   // Enter -> 입력 데이터를 받아서 검색 요청
   onSubmit(input) {
     console.log(tag, 'onSubmit()', input)
+
     this.search(input)
   },
 
@@ -82,7 +83,9 @@ export default {
   search(query) {
     // FormView에 선택한 keyword를 남겨둔다.
     FormView.setValue(query)
-
+    // 최근 검색어 목록에 추가
+    HistoryModel.add(input)
+    
     console.log(tag, 'search()', query)
     // call search api (임시적으로 SearchModel에 저장해둔 데이터를 가져옴)
     SearchModel.list(query).then(data => {

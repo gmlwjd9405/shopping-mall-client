@@ -26,7 +26,7 @@
   - [x] 목록에서 검색어를 클릭하면 선택된 검색어로 검색 결과 화면으로 이동
   - [x] 검색일자, 버튼 목록이 있다
   - [x] 목록에서 x 버튼을 클릭하면 선택된 검색어가 목록에서 삭제
-  - [ ] 검색시마다 최근 검색어 목록에 추가된다
+  - [x] 검색시마다 최근 검색어 목록에 추가된다
 
 ## [Step1] MVC 패턴 (vanilla js)
 
@@ -44,4 +44,4 @@
 - [lite-server](https://github.com/johnpapa/lite-server)
 
 ## References
-* [김정환 - 실습 UI 개발로 배워보는 순수 javascript 와 VueJS 개발https://www.inflearn.com/](https://www.inflearn.com/course/%EC%88%9C%EC%88%98js-vuejs-%EA%B0%9C%EB%B0%9C-%EA%B0%95%EC%A2%8C/)
+* [김정환 - 실습 UI 개발로 배워보는 순수 javascript 와 VueJS 개발](https://www.inflearn.com/course/%EC%88%9C%EC%88%98js-vuejs-%EA%B0%9C%EB%B0%9C-%EA%B0%95%EC%A2%8C/)
