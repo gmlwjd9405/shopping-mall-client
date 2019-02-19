@@ -9,7 +9,17 @@ new Vue({
   methods: {
     onSubmit(e) {
       // e.preventDefault의 역할 (화면 갱신을 막는다.)
+      debugger
+    },
+    onKeyup() {
+      if (!this.query.length) this.onReset()
+    },
+    onReset() {
+      this.query = ''
+      // [todo] 검색 결과 숨기기 
+      debugger
     }
+
   }
 
 })

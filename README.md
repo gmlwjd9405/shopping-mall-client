@@ -38,11 +38,12 @@
     - View가 변경될 때마다 자동으로 즉시 반영(갱신)된다.
     - 하나의 View에는 하나의 ViewModel이 일대일로 매칭된다.
     - 즉, View가 많을 때는 여러 개의 ViewModel이 생긴다.
-- v-model Directive
+### Directive
+- v-model 
     - **양방향 바인딩 지원**
     - 입력 데이터와 vue instance의 data 간의 binding하는 역할 
     - vue instance의 data에 값을 설정해두면 DOM의 input element에 설정된다.
-- v-on Directive
+- v-on 
     - DOM에서 일어나는 이벤트를 listen하는 역할 
     - vue instance의 함수와 binding
     - `v-on:submit.prevent="onSubmit"`
