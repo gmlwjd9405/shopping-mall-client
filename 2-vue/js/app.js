@@ -1,24 +1,29 @@
 import SearchModel from './models/SearchModel.js'
+import KeywordModel from './models/KeywordModel.js'
 
 // 파라미터로 Object를 넘겨준다.
 new Vue({
   /* selector의 id를 app으로 넘겨준다. */
   el: '#app', // element: Vue instance가 html 어디에 마운트될 것인지 설정 
-  
+
   /* 데이터 값을 저장 */
   data: {
     query: '', // 입력데이터를 받아서 저장
     submitted: false, // 검색했는지 여부 
-    searchResult: [], // 검색 결과의 데이터 
+
     tabs: ['추천 검색어', '최근 검색어'],
     selectedTab: '',
+
+    searchResult: [], // 검색 결과의 데이터 
+    keywords: [], // 추천 검색어 
   },
 
   /* (Lifecyle) vue instance가 생성될 때 호출되는 함수 */
   created() {
     this.selectedTab = this.tabs[0]
+    this.fetchKeyword()
   },
- 
+
   /* DOM과 binding할 함수 정의 */
   methods: {
     onSubmit(e) {
@@ -30,6 +35,14 @@ new Vue({
     },
     onReset() {
       this.resetForm()
+    },
+    onClickTab(tab) {
+      this.selectedTab = tab
+    },
+    fetchKeyword() {
+      KeywordModel.list().then(data => {
+        this.keywords = data
+      })
     },
     resetForm() {
       this.query = ''
@@ -43,9 +56,6 @@ new Vue({
         this.searchResult = data
       })
     },
-    onClickTab(tab) {
-      this.selectedTab = tab
-    }
   }
 
 })
