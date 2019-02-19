@@ -60,7 +60,7 @@
         <div v-else>
           <div v-if="history.length">
             <ul class="list">
-              <li v-for="item in history">
+              <li v-for="item in history" v-on:click="onClickHistory(item.keyword)">
                 {{item.keyword}}
               </li>
             </ul>

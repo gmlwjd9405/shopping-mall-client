@@ -46,6 +46,10 @@ new Vue({
       this.query = keyword // 입력한 값을 저장(binding)
       this.search()
     },
+    onClickHistory(keyword) {
+      this.query = keyword // 입력한 값을 저장(binding)
+      this.search()
+    },
     fetchKeyword() {
       KeywordModel.list().then(data => {
         this.keywords = data
