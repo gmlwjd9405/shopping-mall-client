@@ -49,6 +49,8 @@
     - v-on:이벤트 종류="함수 이름"
         - `<form v-on:submit.prevent="onSubmit">`
         - .prevent: e.preventDefault의 역할 (화면 갱신을 막는다.)
+        - `<form v-on:click.stop="onClickRemoveHistory(item.keyword)">`
+        - .stop: 이벤트 전파(bubbling) 방지 
 - v-if / v-else
     - 해당하는 값이 참일 때만 DOM을 출력하는 역할 
 - v-for

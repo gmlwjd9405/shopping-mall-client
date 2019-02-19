@@ -50,6 +50,11 @@ new Vue({
       this.query = keyword // 입력한 값을 저장(binding)
       this.search()
     },
+    onClickRemoveHistory(keyword) {
+      HistoryModel.remove(keyword)
+      this.fetchHistory()
+      // 이벤트 전파 발생 
+    },
     fetchKeyword() {
       KeywordModel.list().then(data => {
         this.keywords = data
