@@ -31,6 +31,13 @@
 ## [Step1] MVC 패턴 (vanilla js)
 
 ## [Step2] MVVM 패턴 (Vue.js)
+### ViewModel
+- Model과 비슷하지만 다른 역할
+- Model과 View 사이에 존재
+    - View에 적합하게 가공된다.
+    - View가 변경될 때마다 자동으로 즉시 반영(갱신)된다.
+    - 하나의 View에는 하나의 ViewModel이 일대일로 매칭된다.
+    - 즉, View가 많을 때는 여러 개의 ViewModel이 생긴다.
 
 ## [Step3] Component
  
