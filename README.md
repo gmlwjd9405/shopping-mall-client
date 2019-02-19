@@ -7,8 +7,8 @@
 - 검색폼 구현
   - [x] 검색 상품명 입력 폼이 위치한다. 검색어가 없는 경우이므로 x 버튼을 숨긴다
   - [x] 검색어를 입력하면 x버튼이 보인다 
-  - [x] 엔터를 입력하면 검색 결과가 보인다 (컨트롤러에게 위임)
-  - [x] x 버튼을 클릭하거나, 검색어를 삭제하면 검색 결과를 삭제한다 (컨트롤러에게 위임)
+  - [x] 엔터를 입력하면 검색 결과가 보인다 (컨트롤러에게 위임 - vanilla js)
+  - [x] x 버튼을 클릭하거나, 검색어를 삭제하면 검색 결과를 삭제한다 (컨트롤러에게 위임 - vanilla js)
 - 검색 결과 구현
   - [x] 검색 결과가 검색폼 아래 위치한다
   - [x] 검색 결과가 보인다
@@ -42,6 +42,11 @@
     - **양방향 바인딩 지원**
     - 입력 데이터와 vue instance의 data 간의 binding하는 역할 
     - vue instance의 data에 값을 설정해두면 DOM의 input element에 설정된다.
+- v-on Directive
+    - DOM에서 일어나는 이벤트를 listen하는 역할 
+    - vue instance의 함수와 binding
+    - `v-on:submit.prevent="onSubmit"`
+        - e.preventDefault의 역할 (화면 갱신을 막는다.)
 
 ## [Step3] Component
  
