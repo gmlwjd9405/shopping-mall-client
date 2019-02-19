@@ -38,7 +38,7 @@ export default {
     if (this.selectedTab === '추천 검색어') {
       this.fetchSearchKeyword()
     } else {
-
+      debugger
     }
 
     ResultView.hide() // 처음엔 감춘다.
@@ -59,7 +59,9 @@ export default {
   // 검색폼이 초기화 및 검색 결과 삭제
   onResetForm() {
     console.log(tag, 'onResetForm()')
-    ResultView.hide() // View의 hide
+
+    // TabView가 남아있도록 controller가 View들을 그리는 render 함수 호출
+    this.renderView()
   },
 
   // Server에 검색 결과를 요청하는 api를 호출
