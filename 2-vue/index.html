@@ -58,7 +58,17 @@
           </div>
         </div>
         <div v-else>
-          최근 검색어 목록 
+          <div v-if="history.length">
+            <ul class="list">
+              <li v-for="item in history">
+                {{item.keyword}}
+              </li>
+            </ul>
+
+          </div>
+          <div v-else>
+            최근 검색어가 없습니다.
+          </div>
         </div>
       </div>
 
