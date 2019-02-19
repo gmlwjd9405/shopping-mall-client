@@ -48,6 +48,13 @@ FormView.onClickReset = function () {
   this.showResetBtn(false) // resetBtn 숨김
 }
 
+// 넘겨받은 키워드 문자열을 FormView에 뿌려줌
+FormView.setValue = function (value = '') {
+  this.inputEL.value = value
+  // x 버튼을 나타나게 한다.
+  this.showResetBtn(this.inputEL.value.length)
+}
+
 // FormView를 controller에서 사용할 것이므로 
 export default FormView
 

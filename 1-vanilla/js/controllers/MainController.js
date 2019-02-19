@@ -64,6 +64,9 @@ export default {
 
   // Server에 검색 결과를 요청하는 api를 호출
   search(query) {
+    // FormView에 선택한 keyword를 남겨둔다.
+    FormView.setValue(query)
+
     console.log(tag, 'search()', query)
     // call search api (임시적으로 SearchModel에 저장해둔 데이터를 가져옴)
     SearchModel.list(query).then(data => {

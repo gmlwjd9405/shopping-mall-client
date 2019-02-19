@@ -21,7 +21,7 @@ KeywordView.render = function (data = []) {
 KeywordView.getKeywordsHtml = function (data) {
   return data.reduce((html, item, index) => {
     // 클릭한 키워드 문자열을 알아내기 위해 data-keyword를 binding
-    html += `<li data-keyword=">${item.keyword}">
+    html += `<li data-keyword="${item.keyword}">
     <span class="number">${index + 1}</span>
     ${item.keyword}</li>`
 
@@ -40,6 +40,7 @@ KeywordView.bindClickEvent = function () {
 KeywordView.onClickKeyword = function (e) {
   // 클릭한 키워드 문자열(위의 getKeywordsHtml에서 binding함)을 가져온다.
   const { keyword } = e.currentTarget.dataset
+  console.log(keyword)
 
   // 검색 결과 페이지로 이동하기 위해 MainController에게 알림 
   this.emit('@click', { keyword })
