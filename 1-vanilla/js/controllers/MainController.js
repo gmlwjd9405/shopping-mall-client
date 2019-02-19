@@ -24,7 +24,7 @@ export default {
 
     TabView.setup(document.querySelector('#tabs')) // id
       .on('@change', e => this.onChangeTab(e.detail.tabName))
-    this.selectedTab = '최근 검색어' // 초기 활성화 tab
+    this.selectedTab = '추천 검색어' // 초기 활성화 tab
 
     KeywordView.setup(document.querySelector('#search-keyword')) // id
       .on('@click', e => this.onClickKeyword(e.detail.keyword))
@@ -43,8 +43,10 @@ export default {
 
     if (this.selectedTab === '추천 검색어') {
       this.fetchSearchKeyword()
+      HistoryView.hide()
     } else {
       this.fetchSearchHistory()
+      KeywordView.hide()
     }
 
     ResultView.hide() // 처음엔 감춘다.
@@ -98,7 +100,8 @@ export default {
   },
 
   onChangeTab(tabName) {
-    debugger
+    this.selectedTab = tabName
+    this.renderView()
   },
 
   // 검색 결과 리스트 목록에서 키워드 선택 시 호출되는 함수 
