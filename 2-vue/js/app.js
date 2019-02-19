@@ -39,6 +39,10 @@ new Vue({
     onClickTab(tab) {
       this.selectedTab = tab
     },
+    onClickKeyword(keyword) {
+      this.query = keyword // 입력한 값을 저장(binding)
+      this.search()
+    },
     fetchKeyword() {
       KeywordModel.list().then(data => {
         this.keywords = data
