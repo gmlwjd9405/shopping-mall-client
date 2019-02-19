@@ -25,6 +25,7 @@ export default {
     this.selectedTab = '추천 검색어' // 초기 활성화 tab
 
     KeywordView.setup(document.querySelector('#search-keyword')) // id
+      .on('@click', e => this.onClickKeyword(e.detail.keyword))
 
     this.renderView()
   },
@@ -72,10 +73,19 @@ export default {
   
   // Server로부터 받은 검색 결과를 화면에 출력 
   onSearchResult(data) {
+    // 기존에 있던 TabView와 KeywordView를 없앤다.
+    TabView.hide()
+    KeywordView.hide()
+    
     ResultView.render(data)
   },
 
   onChangeTab(tabName) {
     debugger
+  },
+
+  // 검색 결과 리스트 목록에서 키워드 선택 시 호출되는 함수 
+  onClickKeyword(keyword) {
+    this.search(keyword)
   }
 }
