@@ -3,6 +3,10 @@ import View from './View.js'
 const tag = '[KeywordView]'
 const KeywordView = Object.create(View)
 
+KeywordView.messages = {
+  NO_KEYWORDS: '추천 검색어가 없습니다.'
+}
+
 KeywordView.setup = function (el) {
   this.init(el)
 
@@ -11,10 +15,12 @@ KeywordView.setup = function (el) {
 
 // 데이터를 받아서 화면에 뿌려주는 함수
 KeywordView.render = function (data = []) {
-  this.el.innerHTML = data.length ? this.getKeywordsHtml(data) : '추천 검색어가 없습니다.'
+  this.el.innerHTML = data.length ? this.getKeywordsHtml(data) : this.messages.NO_KEYWORDS
   this.bindClickEvent() // DOM 생성 후에 이벤트를 바인드해야 함.
 
   this.show()
+
+  return this // chaning을 위해 
 }
 
 // innerHTML에 들어갈 html 문자열(txt + inddex) return

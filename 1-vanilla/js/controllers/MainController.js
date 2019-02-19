@@ -31,6 +31,7 @@ export default {
 
     HistoryView.setup(document.querySelector('#search-history')) // id
       .on('@click', e => this.onClickHistory(e.detail.keyword))
+      .on('@remove', e => this.onRemoveHistory(e.detail.keyword))
 
     this.renderView()
   },
@@ -57,7 +58,7 @@ export default {
 
   fetchSearchHistory() {
     HistoryModel.list().then(data => {
-      HistoryView.render(data)
+      HistoryView.render(data).bindRemoveBtn() // DOM 생성 후 이벤트를 바인드해야 한다.
     })
   },
 
@@ -107,5 +108,11 @@ export default {
 
   onClickHistory(keyword) {
     this.search(keyword)
+  },
+
+  onRemoveHistory(keyword) {
+    // 해당 키워드를 삭제하고 다시 화면을 그린다.
+    HistoryModel.remove(keyword)
+    this.renderView()
   },
 }
