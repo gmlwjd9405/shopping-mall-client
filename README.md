@@ -55,6 +55,11 @@
 - v-bind
     - attribute의 값을 지정하는 역할     
     - `<img v-bind:src="item.image">`
+    - v-bind:"지정한 속성"="{설정할 값: 설정 조건}
+        - `<li v-for="tab in tabs" v-bind:class="{active: tab === selectedTab"> {{tab}} </li>`
+### Lifecycle
+- create()
+    - vue instance가 생성될 때 호출되는 함수 
 
 ## [Step3] Component
  

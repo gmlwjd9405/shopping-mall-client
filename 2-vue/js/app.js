@@ -10,6 +10,12 @@ new Vue({
     query: '', // 입력데이터를 받아서 저장
     submitted: false, // 검색했는지 여부 
     searchResult: [], // 검색 결과의 데이터 
+    tabs: ['추천 검색어', '최근 검색어'],
+  },
+
+  /* (Lifecyle) vue instance가 생성될 때 호출되는 함수 */
+  created() {
+    this.selectedTab = this.tabs[0]
   },
  
   /* DOM과 binding할 함수 정의 */
