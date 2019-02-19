@@ -1,8 +1,10 @@
 import FormView from '../views/FormView.js'
 import ResultView from '../views/ResultView.js'
 import TabView from '../views/TabView.js'
+import KeywordView from '../views/KeywordView.js'
 
 import SearchModel from '../models/SearchModel.js'
+import KeywordModel from '../models/KeywordModel.js'
 
 const tag = '[MainController]' // 디버깅을 위한 태그
 
@@ -22,6 +24,8 @@ export default {
       .on('@change', e => this.onChangeTab(e.detail.tabName))
     this.selectedTab = '추천 검색어' // 초기 활성화 tab
 
+    KeywordView.setup(document.querySelector('#search-keyword')) // id
+
     this.renderView()
   },
 
@@ -29,7 +33,20 @@ export default {
   renderView() {
     console.log(tag, 'renderView()')
     TabView.setActiveTab(this.selectedTab)
+
+    if (this.selectedTab === '추천 검색어') { 
+      this.fetchSearchKeyword()
+    } else {
+      
+    }
+
     ResultView.hide() // 처음엔 감춘다.
+  },
+
+  fetchSearchKeyword() {
+    KeywordModel.list().then(data => { // 해당 데이터를 가져와 화면에 뿌려준다.
+      KeywordView.render(data)
+    })
   },
 
   // Enter -> 입력 데이터를 받아서 검색 요청
