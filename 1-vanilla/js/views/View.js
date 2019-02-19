@@ -3,9 +3,9 @@ const tag = '[View]'
 // 공통으로 사용되는 기능들
 // ES6의 module pattern: _가 default exports를 의미 
 // 해당 객체를 반환
-export default {   
+export default {
   init(el) { // 주입받는 element를 자신의 property로 주입
-    if(!el) throw el
+    if (!el) throw el
     this.el = el;
     return this
   },
@@ -20,7 +20,7 @@ export default {
 
   // 스스로 이벤트를 방출
   emit(event, data) {
-    const evt = new CustomEvent(event, { detail: data } )
+    const evt = new CustomEvent(event, { detail: data })
     this.el.dispatchEvent(evt);
     return this
   },
@@ -34,7 +34,7 @@ export default {
     this.el.style.display = ''
     return this
   }
-  
-  
-  
+
+
+
 }

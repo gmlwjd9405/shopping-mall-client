@@ -28,7 +28,7 @@ TabView.bindClick = function () {
 
 // tabName에 해당하는 tab을 활성화하고 MainController에게 알림
 TabView.onClick = function (tabName) {
-  this.setActiveTab(tabName) 
+  this.setActiveTab(tabName)
   this.emit('@change', { tabName }) // @change event를 알림 
 }
 

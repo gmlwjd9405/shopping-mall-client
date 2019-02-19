@@ -7,7 +7,7 @@ const tag = '[FormView]'
 // new View();와의 차이점??
 const FormView = Object.create(View)
 
-FormView.setup = function(el) {
+FormView.setup = function (el) {
   this.init(el)
   this.inputEL = el.querySelector('[type=text]')
   this.resetEL = el.querySelector('[type=reset]')
@@ -18,7 +18,7 @@ FormView.setup = function(el) {
 }
 
 // 버튼을 보여주는 함수
-FormView.showResetBtn = function(show = true) {
+FormView.showResetBtn = function (show = true) {
   this.resetEL.style.display = show ? 'block' : 'none'
 }
 
@@ -32,18 +32,18 @@ FormView.bindEvents = function () {
 // 1. 입력한 문자열이 있는 경우에만 버튼이 나오도록 
 // 2. 입력한 문자열이 enter이면 MainController에게 알림(ResultView가 결과를 보여줌)
 // 3. 입력한 문자열이 모두 지워지면 MainController에게 알림
-FormView.onKeyup = function(e) {
+FormView.onKeyup = function (e) {
   const enter = 13
   this.showResetBtn(this.inputEL.value.length) // resetBtn 표시 
 
   if (!this.inputEL.value.length) this.emit('@reset') // 3. @reset event를 알림 
-  
+
   if (e.keyCode !== enter) return
   this.emit('@submit', { input: this.inputEL.value }) // @submit event를 알림
 }
 
 // x를 클릭하면 MainController에게 알림
-FormView.onClickReset = function() {
+FormView.onClickReset = function () {
   this.emit('@reset') // @reset event를 알림
   this.showResetBtn(false) // resetBtn 숨김
 }

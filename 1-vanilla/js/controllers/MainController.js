@@ -9,12 +9,12 @@ import KeywordModel from '../models/KeywordModel.js'
 const tag = '[MainController]' // 디버깅을 위한 태그
 
 export default {
-  init() { 
+  init() {
     // console.log(tag, 'init()')
-    
+
     // form에 해당하는 element를 넘겨준다. chaining 이용 
     FormView.setup(document.querySelector('form')) // tag name
-      .on('@submit', e => this.onSubmit(e.detail.input)) 
+      .on('@submit', e => this.onSubmit(e.detail.input))
       .on('@reset', e => this.onResetForm())
 
     // 해당 id에 해당하는 element를 넘겨준다.
@@ -35,10 +35,10 @@ export default {
     console.log(tag, 'renderView()')
     TabView.setActiveTab(this.selectedTab)
 
-    if (this.selectedTab === '추천 검색어') { 
+    if (this.selectedTab === '추천 검색어') {
       this.fetchSearchKeyword()
     } else {
-      
+
     }
 
     ResultView.hide() // 처음엔 감춘다.
@@ -70,13 +70,13 @@ export default {
       this.onSearchResult(data)
     })
   },
-  
+
   // Server로부터 받은 검색 결과를 화면에 출력 
   onSearchResult(data) {
     // 기존에 있던 TabView와 KeywordView를 없앤다.
     TabView.hide()
     KeywordView.hide()
-    
+
     ResultView.render(data)
   },
 

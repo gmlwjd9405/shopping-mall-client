@@ -1,9 +1,9 @@
 /* 검색 기록 */
 export default {
   data: [ // Collection 형태 
-    {keyword: "검색기록2", date:'12.03'},
-    {keyword: "검색기록1", date:'12.02'},
-    {keyword: "검색기록0", date:'12.01'},
+    { keyword: "검색기록2", date: '12.03' },
+    { keyword: "검색기록1", date: '12.02' },
+    { keyword: "검색기록0", date: '12.01' },
   ],
 
   // data를 return 
@@ -14,19 +14,19 @@ export default {
   list() {
     return Promise.resolve(this.data)
   },
-  
+
   // 추가될 검색어를 받아서 실제 데이터에 있는지 확인 후 
   // 있으면 삭제 후 날짜 재설정 
   // 기존 데이터와 합쳐서 
-  add(keyword='') {
+  add(keyword = '') {
     keyword = keyword.trim()
-    if(!keyword) return
-    if(this.data.some(item => item.keyword === keyword)) {
+    if (!keyword) return
+    if (this.data.some(item => item.keyword === keyword)) {
       this.remove(keyword)
     }
 
     const date = '12.31'
-    this.data= [{keyword, date}, ...this.data]
+    this.data = [{ keyword, date }, ...this.data]
   },
 
   remove(keyword) {
