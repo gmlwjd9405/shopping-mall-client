@@ -48,6 +48,13 @@
     - vue instance의 함수와 binding
     - `v-on:submit.prevent="onSubmit"`
         - e.preventDefault의 역할 (화면 갱신을 막는다.)
+- v-if / v-else
+    - 해당하는 값이 참일 때만 DOM을 출력하는 역할 
+- v-for
+    - 해당하는 값을 순차적으로 받아오는 역할
+- v-bind
+    - attribute의 값을 지정하는 역할     
+    - `<img v-bind:src="item.image">`
 
 ## [Step3] Component
  

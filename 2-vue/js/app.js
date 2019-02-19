@@ -1,15 +1,22 @@
+import SearchModel from './models/SearchModel.js'
+
 // 파라미터로 Object를 넘겨준다.
 new Vue({
-  // selector의 id를 app으로 넘겨준다.
+  /* selector의 id를 app으로 넘겨준다. */
   el: '#app', // element: Vue instance가 html 어디에 마운트될 것인지 설정 
+  
+  /* 데이터 값을 저장 */
   data: {
-    query: '' // query: 입력데이터를 받아서 저장
+    query: '', // 입력데이터를 받아서 저장
+    submitted: false, // 검색했는지 여부 
+    searchResult: [], // 검색 결과의 데이터 
   },
-  // DOM과 binding할 함수 정의 
+ 
+  /* DOM과 binding할 함수 정의 */
   methods: {
     onSubmit(e) {
-      // e.preventDefault의 역할 (화면 갱신을 막는다.)
-      debugger
+      // e.preventDefault의 역할 (화면 갱신을 막는다.) - vue에서 처리 
+      this.search()
     },
     onKeyup() {
       if (!this.query.length) this.onReset()
@@ -18,8 +25,13 @@ new Vue({
       this.query = ''
       // [todo] 검색 결과 숨기기 
       debugger
+    },
+    search() {
+      SearchModel.list().then(data => {
+        this.submitted = true // 검색함 
+        this.searchResult = data
+      })
     }
-
   }
 
 })
