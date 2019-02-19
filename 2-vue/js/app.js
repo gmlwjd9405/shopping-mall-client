@@ -11,6 +11,7 @@ new Vue({
     submitted: false, // 검색했는지 여부 
     searchResult: [], // 검색 결과의 데이터 
     tabs: ['추천 검색어', '최근 검색어'],
+    selectedTab: '',
   },
 
   /* (Lifecyle) vue instance가 생성될 때 호출되는 함수 */
@@ -41,6 +42,9 @@ new Vue({
         this.submitted = true // 검색함 
         this.searchResult = data
       })
+    },
+    onClickTab(tab) {
+      this.selectedTab = tab
     }
   }
 
