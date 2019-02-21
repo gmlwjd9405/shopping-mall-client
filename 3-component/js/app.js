@@ -2,7 +2,7 @@ import SearchModel from './models/SearchModel.js'
 import KeywordModel from './models/KeywordModel.js'
 import HistoryModel from './models/HistoryModel.js'
 
-import FormComponent from './components/FormComponent.js'
+import FormComponent from './components/FormComponent.js' // 추가
 
 // 파라미터로 Object를 넘겨준다.
 new Vue({
@@ -20,6 +20,11 @@ new Vue({
     searchResult: [], // 검색 결과의 데이터 
     keywords: [], // 추천 검색어 
     history: [], // 최근 검색어 
+  },
+
+  components: {
+    'search-form': FormComponent
+
   },
 
   /* (Lifecyle) vue instance가 생성될 때 호출되는 함수 */
