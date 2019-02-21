@@ -46,11 +46,11 @@
 - v-on 
     - DOM에서 일어나는 이벤트를 listen하는 역할 
     - vue instance의 함수와 binding
-    - v-on:이벤트 종류="함수 이름"
+    - **v-on:이벤트 종류="함수 이름"**
         - `<form v-on:submit.prevent="onSubmit">`
-        - .prevent: e.preventDefault의 역할 (화면 갱신을 막는다.)
+        - **.prevent**: e.preventDefault의 역할 (화면 갱신을 막는다.)
         - `<form v-on:click.stop="onClickRemoveHistory(item.keyword)">`
-        - .stop: 이벤트 전파(bubbling) 방지 
+        - **.stop:** 이벤트 전파(bubbling) 방지 
 - v-if / v-else
     - 해당하는 값이 참일 때만 DOM을 출력하는 역할 
 - v-for
@@ -58,14 +58,38 @@
 - v-bind
     - attribute의 값을 지정하는 역할     
     - `<img v-bind:src="item.image">`
-    - v-bind:"지정한 속성"="{설정할 값: 설정 조건}
+    - **v-bind:"지정한 속성"="{설정할 값: 설정 조건}**
         - `<li v-for="tab in tabs" v-bind:class="{active: tab === selectedTab"> {{tab}} </li>`
+        
 ### Lifecycle
 - create()
     - vue instance가 생성될 때 호출되는 함수 
 
+### 개선된 점
+- index.html에서 HTML 작성, app.js에서 view instance 작성 
+- 코드의 간결함
+    - 직접 DOM을 핸들링하지 않아도 된다.
+    - v-bind Directive를 이용해서 데이터를 자동으로 바인딩할 수 있다.
+    - vue를 이용해 직접 처리해야하는 부분은 DOM 처리가 아니라 Data 핸들링이 대부분이다.
+    - 즉, DOM 처리는 라이브러리에게 맡겨 다른 부분에 집중할 수 있다. 
+- 더 모듈화하는 방법
+    - Component 이용
+
 ## [Step3] Component
- 
+- 화면의 구조를 모듈별로 나눈다.
+    - 쪼갠 모듈을 트리 형태로 묶을 수 있다.
+- vue.js에서 제공하는 Component 구조 (세가지)
+    - HTML
+        - template
+        - 화면에 출력되는 부분
+    - JS
+        - Component의 로직이 들어가는 부분
+    - CSS
+        - style
+        - 색상 등의 표현 방법  
+    - 이 세가지를 합해서 Component라고 한다.
+    - .vue라는 확장자를 제공한다.
+
 ---
 
 ## Development Environment
