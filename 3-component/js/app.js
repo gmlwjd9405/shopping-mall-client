@@ -3,6 +3,7 @@ import KeywordModel from './models/KeywordModel.js'
 import HistoryModel from './models/HistoryModel.js'
 
 import FormComponent from './components/FormComponent.js' // 추가
+import ResultComponent from './components/ResultComponent.js' // 추가
 
 // 파라미터로 Object를 넘겨준다.
 new Vue({
@@ -24,7 +25,8 @@ new Vue({
 
   /* Component 저장 */
   components: {
-    'search-form': FormComponent
+    'search-form': FormComponent,
+    'search-result': ResultComponent,
 
   },
 
