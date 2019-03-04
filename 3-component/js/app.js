@@ -5,6 +5,7 @@ import HistoryModel from './models/HistoryModel.js'
 import FormComponent from './components/FormComponent.js' // 추가
 import ResultComponent from './components/ResultComponent.js' // 추가
 import ListComponent from './components/ListComponent.js' // 추가
+import TabComponent from './components/TabComponent.js' // 추가
 
 // 파라미터로 Object를 넘겨준다.
 new Vue({
@@ -28,7 +29,8 @@ new Vue({
   components: {
     'search-form': FormComponent,
     'search-result': ResultComponent,
-    'list': ListComponent
+    'list': ListComponent,
+    'tabs': TabComponent, 
 
   },
 

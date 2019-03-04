@@ -19,7 +19,7 @@ export default {
 
   methods: {
     onSubmit() {
-      this.$emit('@submit', this.inputValue) // @submit 이벤트 발생 -> parent 이벤트로 전달 
+      this.$emit('@submit', this.inputValue) // @submit 이벤트 발생 -> parent 이벤트(onClickTab)로 전달 
 
     },
     onKeyup() {
