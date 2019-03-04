@@ -11,7 +11,7 @@ new Vue({
 
   /* 데이터 값을 저장 */
   data: {
-    query: '', // 입력데이터를 받아서 저장
+    query: '', // 입력데이터를 받아서 저장 -> props를 통해 다른 컴포넌트로 값 전달 
     submitted: false, // 검색했는지 여부 
 
     tabs: ['추천 검색어', '최근 검색어'],
@@ -22,6 +22,7 @@ new Vue({
     history: [], // 최근 검색어 
   },
 
+  /* Component 저장 */
   components: {
     'search-form': FormComponent
 
@@ -36,12 +37,12 @@ new Vue({
 
   /* DOM과 binding할 함수 정의 */
   methods: {
-    onSubmit(e) {
+    onSubmit(query) {
+      // FormComponent의 $emit에서 넘겨준 inputValue값을 query에 저장
+      this.query = query
+
       // e.preventDefault의 역할 (화면 갱신을 막는다.) - vue에서 처리 
       this.search()
-    },
-    onKeyup() {
-      if (!this.query.length) this.onReset()
     },
     onReset() {
       this.resetForm()
