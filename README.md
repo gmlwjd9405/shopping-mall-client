@@ -90,6 +90,10 @@
     - 이 세가지를 합해서 Component라고 한다.
     - .vue라는 확장자를 제공한다.
 
+## [Step4] Single Component
+- template, script를 .vue에 위치한다.
+- template을 사용한 html을 하나의 App.vue에 넣어 사용한다.
+
 ---
 
 ## Development Environment
